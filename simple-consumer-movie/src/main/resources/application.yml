@@ -4,3 +4,13 @@ server:
 # user service
 user:
   serviceUrl: http://localhost:8000/
+  serviceName: microservice-provider-user
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: microservice-consumer-movie

@@ -1,6 +1,8 @@
 server:
   port: 8000
 spring:
+  application:
+    name: microservice-provider-user
   jpa:
     generate-ddl: false
     show-sql: false
@@ -16,3 +18,9 @@ logging:
     org.hibernate: info
     org.hibernate.type.descriptor.sql.BasicBinder: trace
     org.hibernate.type.descriptor.sql.BasicExtractor: trace
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true     # 将 ip 作为 service 的唯一标志,注册到 eureka server 上
