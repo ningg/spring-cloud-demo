@@ -59,6 +59,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!--引入 Feign 依赖: 支持声明式的 REST 调用-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+            <version>1.2.4.RELEASE</version>
+        </dependency>
 
     </dependencies>
 

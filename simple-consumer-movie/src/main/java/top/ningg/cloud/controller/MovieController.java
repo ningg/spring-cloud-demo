@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import top.ningg.cloud.feign.IUserFeignClient;
 import top.ningg.cloud.model.User;
 
 import javax.annotation.Resource;
@@ -27,6 +28,9 @@ public class MovieController {
     @Value("${user.serviceName}")
     private String userServiceName;
 
+    @Resource
+    private IUserFeignClient userFeignClient;
+
     @GetMapping("/user/{userId}")
     public User getUserById(@PathVariable("userId") long userId) {
         // Note: 使用 Ribbon 之后, 就无法直接调用 remote service 了, 必须经过 eureka 去发现服务
@@ -41,5 +45,10 @@ public class MovieController {
     @GetMapping("/userInstance")
     public List<ServiceInstance> getUserServiceList() {
         return discoveryClient.getInstances(userServiceName);
+    }
+
+    @GetMapping("/user/{userId}/withFeign")
+    public User getUserByIdWithFeign(@PathVariable("userId") long userId) {
+        return userFeignClient.findById(userId);
     }
 }
