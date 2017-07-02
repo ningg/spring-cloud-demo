@@ -1,8 +1,15 @@
 spring:
   application:
-    name: microservice-foo    # spring config server {application}
+    name: microservice-config-client
   cloud:
     config:
-      uri: http://localhost:8080/
+      name: microservice-foo  # spring config server {application}
       profile: dev            # spring config server {profile}
       label: master           # spring config server {label}
+      discovery:
+        enabled: true                                  # 表示使用服务发现组件中的Config Server，而不自己指定Config Server的uri，默认false
+        service-id: microservice-config-server  # 指定Config Server在服务发现中的serviceId，默认是configserver
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

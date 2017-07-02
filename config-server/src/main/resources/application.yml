@@ -10,3 +10,7 @@ spring:
           uri: https://github.com/ningg/spring-cloud-config-repo.git
           username: guoning.gn@gmail.com
           password: guoning123
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
