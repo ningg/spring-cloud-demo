@@ -29,7 +29,13 @@ public class MovieController {
 
     @GetMapping("/user/{userId}")
     public User getUserById(@PathVariable("userId") long userId) {
+        // Note: 使用 Ribbon 之后, 就无法直接调用 remote service 了, 必须经过 eureka 去发现服务
         return restTemplate.getForObject(userServiceUrl + userId, User.class);
+    }
+
+    @GetMapping("/user/{userId}/withEurekaAndRibbon")
+    public User getUserByIdWithEurekaAndRibbon(@PathVariable("userId") long userId) {
+        return restTemplate.getForObject(String.format("http://%s/", userServiceName) + userId, User.class);
     }
 
     @GetMapping("/userInstance")

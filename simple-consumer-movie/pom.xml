@@ -48,13 +48,17 @@
             <artifactId>spring-cloud-starter-eureka</artifactId>
             <version>1.2.4.RELEASE</version>
         </dependency>
-
+        <!--引入 Ribbon 配合 eureka 在消费端, 支持负载均衡-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
+            <version>1.2.4.RELEASE</version>
+        </dependency>
         <!--开启 Actuator 健康检查-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
 
     </dependencies>
 
