@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: microservice-foo    # spring config server {application}
+  cloud:
+    config:
+      uri: http://localhost:8080/
+      profile: dev            # spring config server {profile}
+      label: master           # spring config server {label}
